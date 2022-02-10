@@ -27,19 +27,10 @@ namespace PrototypeA.Data
                 },
                 new IdentityRole
                 {
-                    Name = "ServiceProvider",
-                    NormalizedName = "SERVICEPROVIDER"
-                },
-                new IdentityRole
-                {
-                    Name = "SatelliteOwner",
-                    NormalizedName = "SATELLITEOWNER"
-                },
-                new IdentityRole
-                {
-                    Name = "Customer",
-                    NormalizedName = "CUSTOMER"
+                    Name = "Diver",
+                    NormalizedName = "DIVER"
                 }
+         
             );
         }
     }
