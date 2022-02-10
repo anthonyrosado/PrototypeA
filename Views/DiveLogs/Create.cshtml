@@ -1,0 +1,83 @@
+﻿@model PrototypeA.Models.DiveLog
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>DiveLog</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Si" class="control-label"></label>
+                <input asp-for="Si" class="form-control" />
+                <span asp-validation-for="Si" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartPg" class="control-label"></label>
+                <input asp-for="StartPg" class="form-control" />
+                <span asp-validation-for="StartPg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirIn" class="control-label"></label>
+                <input asp-for="AirIn" class="form-control" />
+                <span asp-validation-for="AirIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Depth" class="control-label"></label>
+                <input asp-for="Depth" class="form-control" />
+                <span asp-validation-for="Depth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label"></label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="visibility" class="control-label"></label>
+                <input asp-for="visibility" class="form-control" />
+                <span asp-validation-for="visibility" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AirOut" class="control-label"></label>
+                <input asp-for="AirOut" class="form-control" />
+                <span asp-validation-for="AirOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weight" class="control-label"></label>
+                <input asp-for="Weight" class="form-control" />
+                <span asp-validation-for="Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndPg" class="control-label"></label>
+                <input asp-for="EndPg" class="form-control" />
+                <span asp-validation-for="EndPg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

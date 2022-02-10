@@ -1,0 +1,136 @@
+﻿@model IEnumerable<PrototypeA.Models.DiveLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<script type="text/javascript" src="~/js/JavaScript.js"></script>
+<style>
+    #div1{width:33.33%; float:left}
+     #div2{width:33.33%; float:right}
+</style>
+<div id="div1">
+
+<h1>My Diver Profile</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Si)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartPg)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AirIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Depth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.visibility)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AirOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndPg)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Si)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartPg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Depth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.visibility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AirOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndPg)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+</div>
+
+ <div id="div2">
+    <h1>Dive calculator</h1>
+  
+
+<div id="box">
+    <div>
+        <form  action="#" method="post" onsubmit="check(); return false;">
+            <dl>
+                <dt><label id="depth_label" for="depth">Depth of first dive</label></dt>
+                <dd><input name="depth" id="depth" type="text" size="2" maxlength="3" value="" /> ft.</dd>
+            </dl>
+            <dl>
+                <dt><label id="time_label" for="time">Total time of first dive</label></dt>
+                <dd><input name="time" id="time" type="text" size="2" maxlength="3" value="" /> min.</dd>
+            </dl>
+            <dl>
+                <dt><label id="surface_label" for="surface_hr">Length of surface interval</label></dt>
+                <dd><input name="surface_hr" id="surface_hr" type="text" size="2" maxlength="2" value="" /> hrs. <input name="surface_min" id="surface_min" type="text" size="2" maxlength="3" value="" /> min.</dd>
+            </dl>
+            <dl>
+                <dt><label id="depth2_label" for="depth2">Depth of second dive</label></dt>
+                <dd><input name="depth2" id="depth2" type="text" size="2" maxlength="3" value="" /> ft.</dd>
+            </dl>
+            <div >
+                <input type="reset" id="reset" value="Reset" onclick="remove_errors();" />
+                <input id="calculate" type="submit" value="Calculate" />
+            </div>
+        </form>
+        <div id="output"></div>
+    </div>
+</div>
