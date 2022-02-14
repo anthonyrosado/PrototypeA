@@ -3,37 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PrototypeA.Data;
 using PrototypeA.Models;
 
-using Microsoft.AspNetCore.Mvc;
-
 namespace PrototypeA.Controllers
 {
-    [Authorize]
-    public class DiveLogsController : Controller
+    public class DiversController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public DiveLogsController(ApplicationDbContext context)
+        public DiversController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: DiveLogs
-
-      
+        // GET: Divers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.DiveLogs.ToListAsync());
+            return View(await _context.Divers.ToListAsync());
         }
 
-        // GET: DiveLogs/Details/5
-        
+        // GET: Divers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -41,43 +34,39 @@ namespace PrototypeA.Controllers
                 return NotFound();
             }
 
-            var diveLog = await _context.DiveLogs
+            var diver = await _context.Divers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (diveLog == null)
+            if (diver == null)
             {
                 return NotFound();
             }
 
-            return View(diveLog);
+            return View(diver);
         }
 
-        // GET: DiveLogs/Create
-
-        
+        // GET: Divers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: DiveLogs/Create
+        // POST: Divers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
-        public async Task<IActionResult> Create([Bind("Id,DateTime,Location,Si,StartPg,AirIn,Depth,Time,visibility,AirOut,Weight,EndPg")] DiveLog diveLog)
+        public async Task<IActionResult> Create([Bind("Id,Name,email")] Diver diver)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(diveLog);
+                _context.Add(diver);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(diveLog);
+            return View(diver);
         }
 
-        // GET: DiveLogs/Edit/5
-      
+        // GET: Divers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -85,23 +74,22 @@ namespace PrototypeA.Controllers
                 return NotFound();
             }
 
-            var diveLog = await _context.DiveLogs.FindAsync(id);
-            if (diveLog == null)
+            var diver = await _context.Divers.FindAsync(id);
+            if (diver == null)
             {
                 return NotFound();
             }
-            return View(diveLog);
+            return View(diver);
         }
 
-        // POST: DiveLogs/Edit/5
+        // POST: Divers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateTime,Location,Si,StartPg,AirIn,Depth,Time,visibility,AirOut,Weight,EndPg")] DiveLog diveLog)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,email")] Diver diver)
         {
-            if (id != diveLog.Id)
+            if (id != diver.Id)
             {
                 return NotFound();
             }
@@ -110,12 +98,12 @@ namespace PrototypeA.Controllers
             {
                 try
                 {
-                    _context.Update(diveLog);
+                    _context.Update(diver);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DiveLogExists(diveLog.Id))
+                    if (!DiverExists(diver.Id))
                     {
                         return NotFound();
                     }
@@ -126,11 +114,10 @@ namespace PrototypeA.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(diveLog);
+            return View(diver);
         }
 
-        // GET: DiveLogs/Delete/5
-       
+        // GET: Divers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -138,30 +125,30 @@ namespace PrototypeA.Controllers
                 return NotFound();
             }
 
-            var diveLog = await _context.DiveLogs
+            var diver = await _context.Divers
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (diveLog == null)
+            if (diver == null)
             {
                 return NotFound();
             }
 
-            return View(diveLog);
+            return View(diver);
         }
 
-        // POST: DiveLogs/Delete/5
+        // POST: Divers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var diveLog = await _context.DiveLogs.FindAsync(id);
-            _context.DiveLogs.Remove(diveLog);
+            var diver = await _context.Divers.FindAsync(id);
+            _context.Divers.Remove(diver);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DiveLogExists(int id)
+        private bool DiverExists(int id)
         {
-            return _context.DiveLogs.Any(e => e.Id == id);
+            return _context.Divers.Any(e => e.Id == id);
         }
     }
 }

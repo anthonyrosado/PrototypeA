@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PrototypeA.Data;
 
@@ -11,9 +12,10 @@ using PrototypeA.Data;
 namespace PrototypeA.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220211005451_RoleChanges")]
+    partial class RoleChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +49,22 @@ namespace PrototypeA.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "536b7f4e-3cbd-435a-8ce0-af2751a12e59",
+                            ConcurrencyStamp = "a1b722c4-9fb2-4818-acc0-d0a39e579b60",
+                            Name = "AdminUser",
+                            NormalizedName = "ADMINUSER"
+                        },
+                        new
+                        {
+                            Id = "077e0650-11b3-4cc3-ab3b-0b6d7e45c430",
+                            ConcurrencyStamp = "548b9534-9918-4e9f-9abc-3d74482f391d",
+                            Name = "Diver",
+                            NormalizedName = "DIVER"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -244,9 +262,6 @@ namespace PrototypeA.Data.Migrations
                     b.Property<int>("Depth")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DiverId")
-                        .HasColumnType("int");
-
                     b.Property<string>("EndPg")
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
@@ -274,30 +289,7 @@ namespace PrototypeA.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DiverId");
-
                     b.ToTable("DiveLogs");
-                });
-
-            modelBuilder.Entity("PrototypeA.Models.Diver", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Divers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -349,18 +341,6 @@ namespace PrototypeA.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("PrototypeA.Models.DiveLog", b =>
-                {
-                    b.HasOne("PrototypeA.Models.Diver", null)
-                        .WithMany("DiveLogs")
-                        .HasForeignKey("DiverId");
-                });
-
-            modelBuilder.Entity("PrototypeA.Models.Diver", b =>
-                {
-                    b.Navigation("DiveLogs");
                 });
 #pragma warning restore 612, 618
         }

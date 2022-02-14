@@ -13,12 +13,8 @@ namespace PrototypeA.Data
             this.Database.EnsureCreated();
         }
         public DbSet<DiveLog> DiveLogs { get; set; }
+        public DbSet<Diver> Divers { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration(new RoleConfiguration());
-        }
     }
 }

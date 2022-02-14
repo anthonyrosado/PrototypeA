@@ -2,7 +2,44 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<style>
+    #myVideo {
+    position: absolute;
+ position:absolute;z-index:-2;left:0;top:0;
+  min-width: 100%; 
+  min-height: 100%;
+  opacity: 20%;
+}
+</style>
+
+<div class="text-center"
+ <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <h1 class="display-4">Welcome</h1>
     <p>Please Login or Register to Continue</p>
 </div>
+
+
+   
+<video autoplay muted loop id="myVideo">
+  <source src="https://thumbs.gfycat.com/ZestyInsignificantHowlermonkey-mobile.mp4" type="video/mp4">
+  Your browser does not support HTML5 video. 
+</video> 
+
+
+<script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
+    <iframe width="0%" height="0" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1071962227&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/technoblade-xd"  target="_blank" style="color: #cccccc; text-decoration: </a> · <a href="https://soundcloud.com/technoblade-xd/ps4-startup-sound" title="ps4 startup sound" target="_blank" </a></div>
+
+
