@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace PrototypeA.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Diver")]
     public class DiveLogsController : Controller
     {
         private readonly ApplicationDbContext _context;
