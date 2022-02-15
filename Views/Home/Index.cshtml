@@ -14,8 +14,13 @@
 
 <div class="text-center"
  <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+           @if (User.Identity.IsAuthenticated)
+    {
+        <h1 class="display-4">Safe Diving!</h1>
+    }else{
     <h1 class="display-4">Welcome</h1>
     <p>Please Login or Register to Continue</p>
+    }             
 </div>
 
 

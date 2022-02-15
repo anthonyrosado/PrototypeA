@@ -14,11 +14,11 @@
 <h1>My Diver Profile</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><i class="bi bi-plus-circle-fill"primary></i></a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr class="table-primary">
             <th>
                 @Html.DisplayNameFor(model => model.DateTime)
             </th>
@@ -57,7 +57,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+        <tr class="active">
             <td>
                 @Html.DisplayFor(modelItem => item.DateTime)
             </td>
@@ -92,9 +92,9 @@
                 @Html.DisplayFor(modelItem => item.EndPg)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a> 
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info-circle-fill"></i></a> 
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash-fill"></i></a>
             </td>
         </tr>
 }
